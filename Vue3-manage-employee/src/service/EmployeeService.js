@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const  EMPLOYEE_API_BASE_URL = "http://localhost:8080/employee/"
+const  LOGIN_URL = "http://localhost:8080/login"
 
 class EmployeeService{
 
@@ -25,8 +26,12 @@ class EmployeeService{
         return axios.delete(EMPLOYEE_API_BASE_URL + "delete-employee/" + id)
     }
 
-    searchEmployee(keyword,currentPage,sizePage,sortField,sortType){
-        return axios.get(EMPLOYEE_API_BASE_URL + "get-all-employee" + "?keyword=" + keyword + "&currentPage=" + currentPage + "&sizePage=" + sizePage + "&sortField=" + sortField + "&sortType=" + sortType)
+    searchEmployee(keyword,currentPage,sizePage,sortField,sortType,config){
+        return axios.get(EMPLOYEE_API_BASE_URL + "get-all-employee" + "?keyword=" + keyword + "&currentPage=" + currentPage + "&sizePage=" + sizePage + "&sortField=" + sortField + "&sortType=" + sortType, config)
+    }
+
+    login(infoLogin){
+        return axios.post(LOGIN_URL, infoLogin)
     }
 
 }

@@ -103,14 +103,27 @@ export default {
     },
     methods: {
         getEmployee() {
-            EmployeeService.searchEmployee("", 0, 10, "", "").then(response => {
+            let token = document.cookie;
+            console.log("token: " + token)
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+            EmployeeService.searchEmployee("", 0, 10, "", "", config).then(response => {
                 this.listEmployee = response.data;
             })
         },
 
         searchEmployee() {
-
-            EmployeeService.searchEmployee(this.keyword, 0, this.sizePage, this.sortField, "").then(res => {
+            let token = document.cookie;
+            console.log("token" + token)
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+            EmployeeService.searchEmployee(this.keyword, 0, this.sizePage, this.sortField, "", config).then(res => {
                 this.listEmployee = res.data;
             })
         },
@@ -188,7 +201,7 @@ export default {
         recaptchaScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js')
         document.head.appendChild(recaptchaScript)
     },
-    components: {  }
+    components: {}
 }
 </script>
 

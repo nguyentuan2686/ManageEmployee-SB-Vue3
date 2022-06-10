@@ -2,11 +2,13 @@ package com.example.manage_employee.controller;
 
 
 import com.example.manage_employee.dto.EmployeeDTO;
+import com.example.manage_employee.dto.EmployeeLoginDTO;
 import com.example.manage_employee.entity.Employee;
 import com.example.manage_employee.exception.MyCustomException;
 import com.example.manage_employee.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -61,4 +63,9 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return ResponseEntity.ok().build();
     }
+
+//    @PostMapping("/login")
+//    public ResponseEntity<Void> login(@RequestBody EmployeeLoginDTO employeeLoginDTO){
+//
+//    }
 }

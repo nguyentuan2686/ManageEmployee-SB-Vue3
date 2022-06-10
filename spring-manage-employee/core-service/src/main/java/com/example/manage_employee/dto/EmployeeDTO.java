@@ -15,5 +15,6 @@ public class EmployeeDTO {
     private Integer age;
     private WorkStatus workStatus;
     private List<Role> roleList;
+    private String password;
     private List<Integer> roleListId;
 }

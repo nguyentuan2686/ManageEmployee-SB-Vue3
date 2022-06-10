@@ -32,12 +32,17 @@
           <option value="DATHOIVIEC">DATHOIVIEC</option>
         </select>
       </div>
+      <div>
+        <p>Password</p>
+        <input type="text" v-model="password">
+      </div>
 
       <div class="button-action">
         <button class="btn btn-primary" @click="saveButton()" type="submit"> Save </button>
         <button type="reset" class="btn btn-danger"> Cancel </button>
         <button type="button" class="btn btn-secondary" @click="backButton()"> Back </button>
       </div>
+
     </form>
 
   </div>
@@ -58,7 +63,8 @@ export default {
         lastName: "",
         employeeNumber: "",
         age: "",
-        workStatus: ""
+        workStatus: "",
+        password: ""
       }
 
     }
@@ -81,6 +87,7 @@ export default {
       this.employeeNumber = employee.employeeNumber;
       this.age = employee.age;
       this.workStatus = employee.workStatus;
+      this.password = employee.password
       // EmployeeService.getEmployeeById(id).then(response => {
       //   this.employee = response.data;
       //   console.log("employee: " + response.data)
@@ -101,7 +108,8 @@ export default {
         lastName: this.lastName,
         employeeNumber: this.employeeNumber,
         age: this.age,
-        workStatus: this.workStatus
+        workStatus: this.workStatus,
+        password: this.password
       }
       console.log("new employee: " + newEm.firstName)
 

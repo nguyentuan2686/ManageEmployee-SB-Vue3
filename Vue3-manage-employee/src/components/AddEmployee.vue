@@ -33,6 +33,11 @@
         </select>
       </div>
 
+      <div>
+        <p>Password</p>
+        <input type="text" v-model="password">
+      </div>
+
       <div class="button-action">
 
         <button class="btn btn-primary" @click="saveButton()" type="submit"> Save </button>
@@ -56,7 +61,8 @@ export default {
       employeeNumber: "",
       firstName: "",
       lastName: "",
-      age: ""
+      age: "",
+      password: ""
     }
   },
 
@@ -67,7 +73,8 @@ export default {
         lastName: this.lastName,
         employeeNumber: this.employeeNumber,
         age: this.age,
-        workStatus: this.workStatus
+        workStatus: this.workStatus,
+        password: this.password
       }
       EmployeeService.addEmployee(employee).then(res => {
         var status = res.status;

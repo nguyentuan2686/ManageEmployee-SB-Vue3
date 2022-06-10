@@ -1,12 +1,22 @@
 <template>
+  <div class="row">
     <header class="header">
-        <h1>Welcome Web Manage Employee</h1>
+      <h1>Welcome Web Manage Employee</h1>
     </header>
+  </div>
+
 </template>
 
 <script>
 export default {
-    name: "Header",
+  name: "Header",
+  data(){
+    return{
+
+    }
+  },
+  
+
 }
 </script>
 
@@ -23,10 +33,10 @@ export default {
 </script> -->
 
 <style>
-.header{
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
+.header {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
 </style>

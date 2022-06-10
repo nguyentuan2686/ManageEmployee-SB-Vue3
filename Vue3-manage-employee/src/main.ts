@@ -11,12 +11,9 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap";
 
-import {vue3JsonExcel} from "vue3-json-excel"
-
-
 library.add(fas,fab);
 
 createApp(App)
 .component("fai", FontAwesomeIcon)
-.use(router,VueSweetalert2,vue3JsonExcel)
+.use(router,VueSweetalert2)
 .mount('#app')

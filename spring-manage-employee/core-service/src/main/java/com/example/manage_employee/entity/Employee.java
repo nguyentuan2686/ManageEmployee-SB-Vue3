@@ -24,6 +24,7 @@ public class Employee extends Auditable<String>{
     private String lastName;
     private Integer age;
     private WorkStatus workStatus;
+    private String password;
 
     @ManyToMany
     @JsonIgnore
