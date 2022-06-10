@@ -1,0 +1,32 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "compilerOptions": {
+    "outDir": "./built/",
+    "sourceMap": true,
+    "strict": true,
+    // "noImplicitReturns": true,
+    // "noUnusedLocals": false,
+    // "noUnusedParameters": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "vue-sweetalert2"
+    ],
+    // "noImplicitAny": false,
+    "allowJs": true
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}
