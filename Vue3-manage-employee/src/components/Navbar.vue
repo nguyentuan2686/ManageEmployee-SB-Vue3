@@ -16,13 +16,15 @@
 export default {
   data() {
     return {
-      name: ""
+      name: localStorage.getItem("name")
     }
   },
   methods: {
     logout() {
       this.$router.push("/login")
     }
+  },
+  created(){
   }
 }
 </script>

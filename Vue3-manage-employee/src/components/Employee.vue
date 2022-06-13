@@ -89,6 +89,8 @@ import EmployeeService from '../service/EmployeeService'
 import { useRoute } from 'vue-router'
 import Swal from 'sweetalert2'
 import * as filesaver from '../components/filesaver.js'
+import jwt_decode from "jwt-decode";
+
 
 export default {
     name: "employee",
@@ -105,12 +107,12 @@ export default {
         getEmployee() {
             let token = document.cookie;
             console.log("token: " + token)
-            const config = {
-                headers: {
-                    Authorization: token
-                }
-            }
-            EmployeeService.searchEmployee("", 0, 10, "", "", config).then(response => {
+            // const config = {
+            //     headers: {
+            //         Authorization: token
+            //     }
+            // }
+            EmployeeService.searchEmployee("", 0, 10, "", "").then(response => {
                 this.listEmployee = response.data;
             })
         },
@@ -118,12 +120,12 @@ export default {
         searchEmployee() {
             let token = document.cookie;
             console.log("token" + token)
-            const config = {
-                headers: {
-                    Authorization: token
-                }
-            }
-            EmployeeService.searchEmployee(this.keyword, 0, this.sizePage, this.sortField, "", config).then(res => {
+            // const config = {
+            //     headers: {
+            //         Authorization: token
+            //     }
+            // }
+            EmployeeService.searchEmployee(this.keyword, 0, this.sizePage, this.sortField, "").then(res => {
                 this.listEmployee = res.data;
             })
         },
@@ -156,13 +158,36 @@ export default {
         },
 
         editEmployee(id, employee) {
-            localStorage.clear();
             localStorage.setItem("id", id)
+            var token = document.cookie;
+            var decodeJWT = jwt_decode(token);
+            console.log("JWT: " + JSON.stringify(decodeJWT) )
+
             const router = useRoute();
-            this.$router.push({
-                path: '/edit-employee'
-            })
-            localStorage.setItem('Employee', JSON.stringify(employee))
+            if (decodeJWT.sub == employee.employeeNumber) {
+                this.$router.push({
+                    path: '/edit-employee'
+                })
+                localStorage.setItem('Employee', JSON.stringify(employee))
+            } else {
+                var authorrities = decodeJWT.authorrities;
+                
+                for (let i = 0; i < authorrities.length; i++) {
+                    console.log("authorrities: " + authorrities[i].authority)
+                    if (authorrities[i].authority == "ROLE_ADMIN") {
+                        this.$router.push({
+                            path: '/edit-employee'
+                        })
+                        localStorage.setItem('Employee', JSON.stringify(employee))
+                        break;
+                    }else{
+                        Swal.fire({
+                            title: "U dont have a permission to edit other employee"
+                        })
+                    }
+                }
+            }
+
         },
         deleteEmployee(id) {
             Swal.fire({
@@ -193,7 +218,6 @@ export default {
         }
     },
     created() {
-        localStorage.clear();
         this.getEmployee()
     },
     mounted() {

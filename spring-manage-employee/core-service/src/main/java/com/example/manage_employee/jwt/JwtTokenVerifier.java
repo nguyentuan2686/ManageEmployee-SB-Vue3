@@ -28,11 +28,11 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         String authorizationHeader = request.getHeader("Authorization");
-        if(authorizationHeader.isEmpty()|| !authorizationHeader.startsWith("Bear ")){
+        if(authorizationHeader.isEmpty()|| !authorizationHeader.startsWith("Bearer ")){
             filterChain.doFilter(request, response);
             return;
         }
-        String token = authorizationHeader.replace("Bear ", "");
+        String token = authorizationHeader.replace("Bearer ", "");
         try{
             String secretKey = "secretsecretx5secretsecretx5secretsecretx5secretsecretx5secretsecretx5";
 

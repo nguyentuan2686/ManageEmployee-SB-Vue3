@@ -47,14 +47,10 @@ export default {
                 var status = res.status;
                 console.log(res);
                 let jwt = res.headers.authorization
-                // console.log(jwt);
-                // localStorage.setItem('car', 'tom')
-                // localStorage.setItem("jwt", jwt)
                 document.cookie = jwt
-                // console.log("car" + localStorage.getItem("car"))
-                // console.log("jwt" + localStorage.getItem("jwt"))
                 console.log(status)
                 if(status === 200){
+                    localStorage.setItem("name", this.username)
                     this.$router.push("/")
                 }
             });
