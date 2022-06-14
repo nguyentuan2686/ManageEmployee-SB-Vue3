@@ -17,6 +17,7 @@
                     </div>
                 </div>
                 <div>
+                    <br>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             
@@ -47,7 +48,7 @@ export default {
                 var status = res.status;
                 console.log(res);
                 let jwt = res.headers.authorization
-                document.cookie = jwt
+                localStorage.setItem("jwt", jwt)
                 console.log(status)
                 if(status === 200){
                     localStorage.setItem("name", this.username)

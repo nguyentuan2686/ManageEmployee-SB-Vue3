@@ -3,7 +3,7 @@ import axios from "axios";
 
 const  EMPLOYEE_API_BASE_URL = "http://localhost:8080/employee/"
 const  LOGIN_URL = "http://localhost:8080/login"
-const TOKEN = document.cookie
+const TOKEN = localStorage.getItem("jwt");
 const config = {
     headers: {
         'Content-Type': 'application/json',

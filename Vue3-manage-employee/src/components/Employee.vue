@@ -105,8 +105,6 @@ export default {
     },
     methods: {
         getEmployee() {
-            let token = document.cookie;
-            console.log("token: " + token)
             // const config = {
             //     headers: {
             //         Authorization: token
@@ -118,8 +116,8 @@ export default {
         },
 
         searchEmployee() {
-            let token = document.cookie;
-            console.log("token" + token)
+            // let token = document.cookie;
+            // console.log("token" + token)
             // const config = {
             //     headers: {
             //         Authorization: token
@@ -159,7 +157,7 @@ export default {
 
         editEmployee(id, employee) {
             localStorage.setItem("id", id)
-            var token = document.cookie;
+            var token = localStorage.getItem("jwt");
             var decodeJWT = jwt_decode(token);
             console.log("JWT: " + JSON.stringify(decodeJWT) )
 

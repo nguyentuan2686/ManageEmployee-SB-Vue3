@@ -8,5 +8,7 @@ public class FrontEndDefineCode {
     public static final Integer EMPLOYEE_NUMBER_IS_ALREAdY_EXIST = 32;
     public static final Integer EMPLOYEE_NOT_FOUND = 33;
 
+    public static final Integer DONT_HAVE_PERMISSON = 34;
+
     public static final Integer ERROR_UNKNOW = 999;
 }
